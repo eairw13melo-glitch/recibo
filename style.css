@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.recibo-container {
+  box-shadow: 0 20px 40px -10px rgb(0 0 0 / 0.25);
+}
+
+/* ==================== IMPRESSÃO AVANÇADA – MEIA FOLHA A4 COM MARGENS ==================== */
+@media print {
+  .no-print, .no-print * {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .recibo-container,
+  .recibo-container * {
+    visibility: visible !important;
+    display: block !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 22mm 18mm 22mm 18mm;
+  }
+
+  .recibo-container {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 18mm 22mm !important;
+    border: 3px solid #111827 !important;
+    background: white !important;
+    box-shadow: none !important;
+    box-sizing: border-box;
+    color: #111827 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .recibo-logo img { max-width: 128px !important; margin-bottom: 6mm !important; }
+  .recibo-numero { font-size: 15.5px !important; margin-bottom: 6mm !important; }
+  
+  .recibo-header {
+    font-size: 26px !important;
+    padding-bottom: 10mm !important;
+    margin-bottom: 14mm !important;
+    border-bottom: 4px solid #111827 !important;
+  }
+  
+  .recibo-body {
+    font-size: 15.2px !important;
+    line-height: 1.72 !important;
+    margin-bottom: 16mm !important;
+  }
+  
+  .recibo-footer { font-size: 15px !important; margin-top: 12mm !important; }
+  
+  .assinatura { margin-top: 28mm !important; }
+  .assinatura-img { width: 152px !important; margin-bottom: 6mm !important; }
+  
+  hr {
+    border-top: 2.8px solid #111827 !important;
+    margin: 6mm 0 5mm 0 !important;
+  }
+
+  .flex.justify-center.gap-4.mt-10 { display: none !important; }
+}

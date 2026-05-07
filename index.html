@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gerador de Recibo - KR² Melo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100 py-8">
+  <div class="max-w-7xl mx-auto px-6">
+    <h1 class="text-4xl font-bold text-center text-gray-900 mb-10 no-print">Gerador de Recibo — KR² Melo</h1>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <!-- FORMULÁRIO -->
+      <div class="bg-white rounded-3xl shadow-xl p-8 no-print">
+        <h2 class="text-2xl font-semibold mb-6 text-gray-800">Preencha os dados</h2>
+        <div class="space-y-6">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Valor (R$)</label>
+            <input type="number" id="valor" step="0.01" class="w-full px-5 py-4 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-emerald-600 focus:border-transparent text-lg" placeholder="350.00">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Pagador</label>
+            <select id="pagador" class="w-full px-5 py-4 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-emerald-600 text-lg">
+              <option value="Condomínio Nova Esperança - Bloco 2058">Condomínio Nova Esperança - Bloco 2058</option>
+              <option value="Condomínio Vitória - Bloco 2060">Condomínio Vitória - Bloco 2060</option>
+              <option value="Condomínio Primavera - Bloco 1938">Condomínio Primavera - Bloco 1938</option>
+              <option value="Bloco 1968">Bloco 1968</option>
+              <option value="Bloco 1970">Bloco 1970</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Referente</label>
+            <select id="referente" class="w-full px-5 py-4 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-emerald-600 text-lg">
+              <option value="leitura de hidrômetro do mês de janeiro de 2026">Leitura de hidrômetro — Janeiro/2026</option>
+              <option value="leitura de hidrômetro do mês de fevereiro de 2026">Leitura de hidrômetro — Fevereiro/2026</option>
+              <option value="leitura de hidrômetro do mês de março de 2026">Leitura de hidrômetro — Março/2026</option>
+              <option value="leitura de hidrômetro do mês de abril de 2026">Leitura de hidrômetro — Abril/2026</option>
+              <option value="leitura de hidrômetro do mês de maio de 2026">Leitura de hidrômetro — Maio/2026</option>
+              <option value="leitura de hidrômetro do mês de junho de 2026">Leitura de hidrômetro — Junho/2026</option>
+              <option value="leitura de hidrômetro do mês de julho de 2026">Leitura de hidrômetro — Julho/2026</option>
+              <option value="leitura de hidrômetro do mês de agosto de 2026">Leitura de hidrômetro — Agosto/2026</option>
+              <option value="leitura de hidrômetro do mês de setembro de 2026">Leitura de hidrômetro — Setembro/2026</option>
+              <option value="leitura de hidrômetro do mês de outubro de 2026">Leitura de hidrômetro — Outubro/2026</option>
+              <option value="leitura de hidrômetro do mês de novembro de 2026">Leitura de hidrômetro — Novembro/2026</option>
+              <option value="leitura de hidrômetro do mês de dezembro de 2026">Leitura de hidrômetro — Dezembro/2026</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Data de Pagamento</label>
+            <input type="date" id="data" class="w-full px-5 py-4 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-emerald-600 text-lg">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Forma de Pagamento</label>
+            <select id="formaPagamento" class="w-full px-5 py-4 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-emerald-600 text-lg">
+              <option value="Pix">Pix</option>
+              <option value="Dinheiro">Dinheiro</option>
+              <option value="Transferência/Depósito">Transferência/Depósito</option>
+              <option value="Cheque">Cheque</option>
+              <option value="Cartão de Crédito/Débito">Cartão de Crédito/Débito</option>
+              <option value="Boleto">Boleto</option>
+            </select>
+          </div>
+        </div>
+        <div class="flex gap-4 mt-10">
+          <button onclick="gerarRecibo()" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-4 rounded-2xl text-lg transition">Gerar / Atualizar Recibo</button>
+          <button onclick="limparTudo()" class="flex-1 bg-red-600 hover:bg-red-700 text-white font-semibold py-4 rounded-2xl text-lg transition">Limpar</button>
+        </div>
+      </div>
+
+      <!-- PREVIEW -->
+      <div>
+        <div id="reciboContainer" class="bg-white rounded-3xl border-2 border-gray-900 p-10 recibo-container hidden">
+          <div class="recibo-numero text-right font-bold text-xl mb-4" id="reciboNumero"></div>
+          <div class="recibo-logo text-center mb-6">
+            <img src="logorecibo.png" alt="KR² Melo" class="mx-auto" style="max-width: 170px;">
+          </div>
+          <div class="text-center mb-8">
+            <div class="inline-flex items-center gap-3 bg-gray-100 text-gray-800 text-sm font-medium px-5 py-2 rounded-3xl">
+              <span class="text-emerald-600">●</span>
+              KR² MELO — HIDROMETRAGEM E SERVIÇOS
+            </div>
+            <p class="text-xs text-gray-500 mt-1">Rafael Wanderley Melo • (15) 99793-9699 • Itapetininga/SP</p>
+          </div>
+          <div class="recibo-header flex justify-between items-end pb-4">
+            <span class="text-3xl font-semibold text-gray-900">Recibo de Pagamento</span>
+            <span id="valorFormatado" class="text-3xl font-bold border-2 border-gray-900 px-6 py-2 rounded-2xl"></span>
+          </div>
+          <div class="recibo-body text-gray-800 leading-relaxed text-[17px]" id="reciboTexto"></div>
+          <div class="recibo-footer text-right mt-12 text-lg font-medium" id="reciboData"></div>
+          <div class="assinatura mt-14 text-center">
+            <div class="inline-block relative w-80">
+              <img src="assinatura.png" alt="Assinatura" class="mx-auto mb-2" style="width: 170px;">
+              <hr class="border-t-2 border-gray-900">
+              <strong class="block mt-1">RAFAEL WANDERLEY MELO</strong>
+              <small class="text-gray-600">(15) 9 9793-9699</small>
+            </div>
+          </div>
+          <div class="flex justify-center gap-4 mt-10">
+            <button onclick="gerarPDF()" class="px-8 py-3 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-2xl flex items-center gap-2">📄 Baixar PDF</button>
+            <button onclick="window.print()" class="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-2xl flex items-center gap-2">🖨️ Imprimir</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HISTÓRICO -->
+    <div class="mt-16 no-print">
+      <h2 class="text-2xl font-semibold mb-4 text-gray-800">📋 Histórico de Recibos (últimos 10)</h2>
+      <div id="historicoLista" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
