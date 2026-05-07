@@ -8,9 +8,8 @@ body {
   box-shadow: 0 20px 40px -10px rgb(0 0 0 / 0.25);
 }
 
-/* ==================== IMPRESSÃO FORÇADA EM UMA ÚNICA PÁGINA (MEIA FOLHA A4) ==================== */
+/* ==================== IMPRESSÃO ULTRA COMPACTA – MEIA FOLHA A4 ==================== */
 @media print {
-  /* Esconde tudo que não é o recibo */
   .no-print,
   .no-print * {
     display: none !important;
@@ -20,26 +19,22 @@ body {
     padding: 0 !important;
   }
 
-  /* Mostra apenas o recibo */
   .recibo-container,
   .recibo-container * {
     visibility: visible !important;
     display: block !important;
   }
 
-  /* Configuração da página A4 */
   @page {
     size: A4 portrait;
-    margin: 15mm 12mm 15mm 12mm;   /* Margens equilibradas */
+    margin: 12mm 10mm 12mm 10mm;   /* Margens menores */
   }
 
-  /* Recibo extremamente compacto – cabe em meia folha A4 */
   .recibo-container {
     position: relative !important;
     width: 100% !important;
-    max-width: 100% !important;
     margin: 0 auto !important;
-    padding: 12mm 16mm !important;           /* Reduzido ao máximo */
+    padding: 9mm 13mm !important;     /* MUITO reduzido */
     border: 3px solid #111827 !important;
     background: white !important;
     box-shadow: none !important;
@@ -53,50 +48,50 @@ body {
     overflow: hidden !important;
   }
 
-  /* Ajustes finos para caber em 1 página */
+  /* Ajustes extremos para caber em meia folha */
   .recibo-logo img { 
-    max-width: 115px !important; 
-    margin-bottom: 4mm !important; 
+    max-width: 105px !important; 
+    margin-bottom: 3mm !important; 
   }
   
   .recibo-numero { 
-    font-size: 15px !important; 
-    margin-bottom: 4mm !important; 
+    font-size: 14px !important; 
+    margin-bottom: 3mm !important; 
   }
   
   .recibo-header {
-    font-size: 24px !important;
-    padding-bottom: 6mm !important;
-    margin-bottom: 10mm !important;
-    border-bottom: 3.5px solid #111827 !important;
+    font-size: 22px !important;
+    padding-bottom: 5mm !important;
+    margin-bottom: 8mm !important;
+    border-bottom: 3px solid #111827 !important;
   }
   
   .recibo-body {
-    font-size: 14.8px !important;
-    line-height: 1.65 !important;
-    margin-bottom: 12mm !important;
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 9mm !important;
   }
   
   .recibo-footer {
-    font-size: 14.5px !important;
-    margin-top: 8mm !important;
+    font-size: 14px !important;
+    margin-top: 6mm !important;
   }
   
   .assinatura {
-    margin-top: 18mm !important;
+    margin-top: 14mm !important;
   }
   
   .assinatura-img {
-    width: 145px !important;
-    margin-bottom: 4mm !important;
+    width: 138px !important;
+    margin-bottom: 3mm !important;
   }
   
   hr {
-    border-top: 2.5px solid #111827 !important;
-    margin: 5mm 0 4mm 0 !important;
+    border-top: 2.2px solid #111827 !important;
+    margin: 4mm 0 3mm 0 !important;
   }
 
-  /* Esconde botões na impressão */
+  /* Esconde botões */
   .flex.justify-center.gap-4.mt-10 { 
     display: none !important; 
   }
