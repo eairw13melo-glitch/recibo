@@ -8,7 +8,7 @@ body {
   box-shadow: 0 20px 40px -10px rgb(0 0 0 / 0.25);
 }
 
-/* ==================== IMPRESSÃO ULTRA COMPACTA – MEIA FOLHA A4 ==================== */
+/* ==================== IMPRESSÃO ULTRA COMPACTA – EXATAMENTE MEIA FOLHA A4 ==================== */
 @media print {
   .no-print,
   .no-print * {
@@ -27,14 +27,14 @@ body {
 
   @page {
     size: A4 portrait;
-    margin: 12mm 10mm 12mm 10mm;   /* Margens menores */
+    margin: 10mm 8mm 10mm 8mm;   /* Margens mínimas */
   }
 
   .recibo-container {
     position: relative !important;
     width: 100% !important;
     margin: 0 auto !important;
-    padding: 9mm 13mm !important;     /* MUITO reduzido */
+    padding: 8mm 11mm !important;        /* Muito reduzido */
     border: 3px solid #111827 !important;
     background: white !important;
     box-shadow: none !important;
@@ -42,53 +42,53 @@ body {
     color: #111827 !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
-    page-break-inside: avoid;
-    break-inside: avoid;
-    max-height: 100vh !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    max-height: 148mm !important;        /* Força meia folha A4 */
     overflow: hidden !important;
   }
 
-  /* Ajustes extremos para caber em meia folha */
+  /* Compactação extrema */
   .recibo-logo img { 
-    max-width: 105px !important; 
-    margin-bottom: 3mm !important; 
+    max-width: 100px !important; 
+    margin-bottom: 2mm !important; 
   }
   
   .recibo-numero { 
-    font-size: 14px !important; 
-    margin-bottom: 3mm !important; 
+    font-size: 13.5px !important; 
+    margin-bottom: 2mm !important; 
   }
   
   .recibo-header {
-    font-size: 22px !important;
-    padding-bottom: 5mm !important;
-    margin-bottom: 8mm !important;
+    font-size: 21px !important;
+    padding-bottom: 4mm !important;
+    margin-bottom: 7mm !important;
     border-bottom: 3px solid #111827 !important;
   }
   
   .recibo-body {
-    font-size: 14px !important;
-    line-height: 1.55 !important;
-    margin-bottom: 9mm !important;
+    font-size: 13.8px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 8mm !important;
   }
   
   .recibo-footer {
-    font-size: 14px !important;
-    margin-top: 6mm !important;
+    font-size: 13.5px !important;
+    margin-top: 5mm !important;
   }
   
   .assinatura {
-    margin-top: 14mm !important;
+    margin-top: 12mm !important;
   }
   
   .assinatura-img {
-    width: 138px !important;
+    width: 135px !important;
     margin-bottom: 3mm !important;
   }
   
   hr {
-    border-top: 2.2px solid #111827 !important;
-    margin: 4mm 0 3mm 0 !important;
+    border-top: 2px solid #111827 !important;
+    margin: 3.5mm 0 3mm 0 !important;
   }
 
   /* Esconde botões */
