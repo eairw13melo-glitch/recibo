@@ -19,7 +19,7 @@
         <div class="space-y-6">
           <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Valor (R$)</label>
-            <input type="number" id="valor" step="0.01" class="w-full px-5 py-4 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-emerald-600 focus:border-transparent text-lg" placeholder="350.00">
+            <input type="number" id="valor" step="0.01" class="w-full px-5 py-4 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-emerald-600 text-lg" placeholder="350.00">
           </div>
           <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Pagador</label>
@@ -65,8 +65,8 @@
           </div>
         </div>
         <div class="flex gap-4 mt-10">
-          <button onclick="gerarRecibo()" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-4 rounded-2xl text-lg transition">Gerar / Atualizar Recibo</button>
-          <button onclick="limparTudo()" class="flex-1 bg-red-600 hover:bg-red-700 text-white font-semibold py-4 rounded-2xl text-lg transition">Limpar</button>
+          <button onclick="gerarRecibo()" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-4 rounded-2xl text-lg">Gerar / Atualizar Recibo</button>
+          <button onclick="limparTudo()" class="flex-1 bg-red-600 hover:bg-red-700 text-white font-semibold py-4 rounded-2xl text-lg">Limpar</button>
         </div>
       </div>
 
@@ -106,7 +106,6 @@
       </div>
     </div>
 
-    <!-- HISTÓRICO -->
     <div class="mt-16 no-print">
       <h2 class="text-2xl font-semibold mb-4 text-gray-800">📋 Histórico de Recibos (últimos 10)</h2>
       <div id="historicoLista" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
