@@ -89,11 +89,19 @@ function gerarPDF() {
   const numero = document.getElementById("reciboNumero").innerText.replace(/[^0-9/]/g, "").replace("/", "-");
 
   const opt = {
-    margin: [15, 12, 80, 12],     // ← Margens exatas que você pediu
+    margin: [15, 12, 80, 12],        // ← Margens exatas que você pediu
     filename: `Recibo_${numero}.pdf`,
     image: { type: "jpeg", quality: 0.98 },
-    html2canvas: { scale: 3, useCORS: true },
-    jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
+    html2canvas: { 
+      scale: 3, 
+      useCORS: true,
+      letterRendering: true 
+    },
+    jsPDF: { 
+      unit: "mm", 
+      format: "a4", 
+      orientation: "portrait" 
+    }
   };
 
   html2pdf().set(opt).from(element).save();
