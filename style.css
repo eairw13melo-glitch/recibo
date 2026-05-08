@@ -1,72 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
-body {
-  font-family: 'Inter', system-ui, sans-serif;
-}
+body { font-family: 'Inter', system-ui, sans-serif; }
 
-.recibo-container {
-  box-shadow: 0 20px 40px -10px rgb(0 0 0 / 0.25);
-}
+.recibo-container { box-shadow: 0 20px 40px -10px rgb(0 0 0 / 0.25); }
 
-/* ==================== IMPRESSÃO + PDF ULTRA COMPACTO ==================== */
+/* IMPRESSÃO + PDF - MEIA FOLHA A4 EXATA */
 @media print {
   .no-print, .no-print * { display: none !important; }
-
+  
   .recibo-container,
-  .recibo-container * {
-    visibility: visible !important;
-    display: block !important;
-  }
+  .recibo-container * { visibility: visible !important; display: block !important; }
 
   @page {
     size: A4 portrait;
-    margin: 15mm 12mm 80mm 12mm;   /* Margens exatas que você pediu */
+    margin: 15mm 12mm 80mm 12mm;
   }
 
   .recibo-container {
-    position: relative !important;
-    width: 100% !important;
-    margin: 0 auto !important;
     padding: 8mm 11mm !important;
     border: 3px solid #111827 !important;
-    background: white !important;
-    box-shadow: none !important;
-    box-sizing: border-box;
-    color: #111827 !important;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-    page-break-inside: avoid !important;
-    break-inside: avoid !important;
     max-height: 100vh !important;
     overflow: hidden !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 
-  /* Compactação extrema para caber na metade superior */
   .recibo-logo img { max-width: 105px !important; margin-bottom: 2mm !important; }
   .recibo-numero { font-size: 14px !important; margin-bottom: 2mm !important; }
-  
-  .recibo-header {
-    font-size: 22px !important;
-    padding-bottom: 4mm !important;
-    margin-bottom: 7mm !important;
-    border-bottom: 3px solid #111827 !important;
-  }
-  
-  .recibo-body {
-    font-size: 13.8px !important;
-    line-height: 1.52 !important;
-    margin-bottom: 8mm !important;
-  }
-  
+  .recibo-header { font-size: 22px !important; padding-bottom: 4mm !important; margin-bottom: 7mm !important; border-bottom: 3px solid #111827 !important; }
+  .recibo-body { font-size: 13.8px !important; line-height: 1.52 !important; margin-bottom: 8mm !important; }
   .recibo-footer { font-size: 13.5px !important; margin-top: 5mm !important; }
-  
   .assinatura { margin-top: 12mm !important; }
   .assinatura-img { width: 135px !important; margin-bottom: 3mm !important; }
+  hr { border-top: 2px solid #111827 !important; margin: 3.5mm 0 3mm 0 !important; }
   
-  hr {
-    border-top: 2px solid #111827 !important;
-    margin: 3.5mm 0 3mm 0 !important;
-  }
-
   .flex.justify-center.gap-4.mt-10 { display: none !important; }
 }
