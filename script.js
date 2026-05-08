@@ -77,7 +77,7 @@ function gerarPDF() {
   const numero = document.getElementById("reciboNumero").innerText.replace(/[^0-9/]/g, "").replace("/", "-");
 
   html2pdf().set({
-    margin: [15, 12, 80, 12],
+    margin: [80, 12, 80, 12],
     filename: `Recibo_${numero}.pdf`,
     image: { type: "jpeg", quality: 0.98 },
     html2canvas: { scale: 3, useCORS: true, letterRendering: true },
