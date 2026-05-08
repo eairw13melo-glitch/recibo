@@ -78,20 +78,24 @@ function gerarRecibo(isPreview = false) {
   }
 }
 
+// ====================== PDF COM MARGENS EXATAS SOLICITADAS ======================
 function gerarPDF() {
   const element = document.getElementById("reciboContainer");
   if (!element || element.style.display === "none") {
     alert("❌ Primeiro gere o recibo antes de baixar o PDF.");
     return;
   }
+
   const numero = document.getElementById("reciboNumero").innerText.replace(/[^0-9/]/g, "").replace("/", "-");
+
   const opt = {
-    margin: [15, 12, 80, 12],
+    margin: [15, 12, 80, 12],     // ← Margens exatas que você pediu
     filename: `Recibo_${numero}.pdf`,
     image: { type: "jpeg", quality: 0.98 },
     html2canvas: { scale: 3, useCORS: true },
     jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
   };
+
   html2pdf().set(opt).from(element).save();
 }
 
